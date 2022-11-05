@@ -26,8 +26,9 @@ async function bootstrap() {
   await fastify.register(userRoutes);
 
   // PARA CONECTAR COM MOBILE, É NECESSÁRIO O HOST EM DEV
+  const host = process.env.HOST || "0.0.0.0";
   const port = Number(process.env.PORT) || 3333;
-  await fastify.listen({ port });
+  await fastify.listen({ port, host });
 }
 
 bootstrap();
